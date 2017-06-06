@@ -1,5 +1,5 @@
 module.exports = kunlun => {
-   const { OP_ERR_CODES } = kunlun.errors;
+   const { KUNLUN_ERR_CODES } = kunlun.errors;
 
 
 
@@ -20,7 +20,7 @@ module.exports = kunlun => {
             .catch(err => {
                if(err.name === 'KunlunError')
                   switch(err.code){
-                  case OP_ERR_CODES.CHALLENGE.USERNAME.NOTFOUND:
+                  case KUNLUN_ERR_CODES.CHALLENGE.USERNAME.NOTFOUND:
                      res.status(401).json(new Error('Invalid credentials')).end();
                      break;
                   default: throw err;
@@ -56,14 +56,14 @@ module.exports = kunlun => {
             .catch(err => {
                if(err.name === 'KunlunError')
                   switch(err.code){
-                  case OP_ERR_CODES.CHALLENGE.USERNAME.NOTFOUND:
+                  case KUNLUN_ERR_CODES.CHALLENGE.USERNAME.NOTFOUND:
                      res.status(401).json(new Error('The credentials don\'t exist anymore')).end();
                      break;
-                  case OP_ERR_CODES.CHALLENGE.PROOF.CHECK:
+                  case KUNLUN_ERR_CODES.CHALLENGE.PROOF.CHECK:
                      res.status(401).json(new Error('Incorrect answer')).end();
                      break;
-                  case OP_ERR_CODES.CHALLENGE.TYPE:
-                  case OP_ERR_CODES.CHALLENGE.NOTFOUND:
+                  case KUNLUN_ERR_CODES.CHALLENGE.TYPE:
+                  case KUNLUN_ERR_CODES.CHALLENGE.NOTFOUND:
                      res.status(400).json(new Error('The given challenge doesn\'t exist or it has been answered already')).end();
                      break;
                   default: throw err;

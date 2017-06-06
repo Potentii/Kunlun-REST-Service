@@ -1,5 +1,5 @@
 module.exports = kunlun => {
-   const { OP_ERR_CODES } = kunlun.errors;
+   const { KUNLUN_ERR_CODES } = kunlun.errors;
 
 
 
@@ -22,7 +22,7 @@ module.exports = kunlun => {
          .catch(err => {
             if(err.name === 'KunlunError')
                switch(err.code){
-               case OP_ERR_CODES.CREDENTIALS.USERNAME.EXISTS:
+               case KUNLUN_ERR_CODES.CREDENTIALS.USERNAME.EXISTS:
                   res.status(400).json(new Error('This credentials already exists')).end();
                   break;
                default: throw err;

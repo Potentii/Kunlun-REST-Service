@@ -1,5 +1,5 @@
 module.exports = kunlun => {
-   const { OP_ERR_CODES } = kunlun.errors;
+   const { KUNLUN_ERR_CODES } = kunlun.errors;
 
 
 
@@ -25,7 +25,7 @@ module.exports = kunlun => {
             .catch(err => {
                if(err.name === 'KunlunError')
                   switch(err.code){
-                  case OP_ERR_CODES.ADMIN.CHECK:
+                  case KUNLUN_ERR_CODES.ADMIN.CHECK:
                      res.status(401).end();
                      break;
                   default: throw err;
@@ -56,10 +56,10 @@ module.exports = kunlun => {
             .catch(err => {
                if(err.name === 'KunlunError')
                   switch(err.code){
-                  case OP_ERR_CODES.ADMIN.USERNAME.EXISTS:
+                  case KUNLUN_ERR_CODES.ADMIN.USERNAME.EXISTS:
                      res.status(400).json(new Error('This admin already exists')).end();
                      break;
-                  case OP_ERR_CODES.ADMIN.USERNAME.MISSING:
+                  case KUNLUN_ERR_CODES.ADMIN.USERNAME.MISSING:
                      res.status(400).json(new Error('The admin username isn\'t valid')).end();
                      break;
                   default: throw err;

@@ -1,5 +1,5 @@
 module.exports = kunlun => {
-   const { OP_ERR_CODES } = kunlun.errors;
+   const { KUNLUN_ERR_CODES } = kunlun.errors;
    
 
 
@@ -27,8 +27,8 @@ module.exports = kunlun => {
             .catch(err => {
                if(err.name === 'KunlunError')
                   switch(err.code){
-                  case OP_ERR_CODES.ACCESS.CHECK.TOKEN:
-                  case OP_ERR_CODES.ACCESS.CHECK.USERNAME:
+                  case KUNLUN_ERR_CODES.ACCESS.CHECK.TOKEN:
+                  case KUNLUN_ERR_CODES.ACCESS.CHECK.USERNAME:
                      res.status(401).end();
                      break;
                   default: throw err;
